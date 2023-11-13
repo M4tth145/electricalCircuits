@@ -1,0 +1,256 @@
+\documentclass[12pt,a4paper]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+%\usepackage{a4wide}
+\usepackage{url}
+%\usepackage{amssymb}
+\usepackage{times}
+\usepackage{hyperref}
+\usepackage{siunitx}
+
+\renewcommand\baselinestretch{1.125}
+
+\begin{document}
+\title{\textbf{Berechnung aller möglichen Schaltungsarten/home/mth/bbs-me/bfia-21/2/E-Technik/alle-schaltungen/alle-schaltungen.tex}}
+\author{Meinen Name wüsste wohl gerne :)}
+\date{\today}
+
+\maketitle
+
+\section{Parallelschaltung}
+\textbf{Gegeben:}
+\begin{itemize}
+  \item $R_1 = \qty{1.5}\kohm$
+  \item $R_2 = \qty{820}\ohm$
+  \item $R_3 = \qty{2.2}\kohm$
+  \item $U_e = \qty{9}\volt$
+\end{itemize}
+
+\textbf{Gesucht:}
+\begin{itemize}
+  \item $I_1 \dots I_6$
+  \item $R_g$
+\end{itemize}
+
+\subsection{Berechnung der Parallelschaltung}
+\begin{align*}
+  R_g&=\left(\frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3}\right)^{-1}\\
+  R_g&=\left(\frac{1}{1.5}+\frac{1}{0.82}+\frac{1}{2.2}\right)^{-1}\\
+  R_g&\approx \qty{427}{\ohm}
+\end{align*}
+\begin{align*}
+  I_1&=I_6\\
+  I_1&=\frac{U}{R_g}\\
+  I_1&=\frac{15}{427}\\
+  I_1&\approx \qty{35}{\mA}
+\end{align*}
+\begin{align*}
+  I_2&=\frac{U}{R_1}\\
+  I_2&=\frac{15}{1500}\\
+  I_2&\approx \qty{10}{\mA}
+\end{align*}
+\begin{align*}
+  I_3&=\frac{U}{R_2}\\
+  I_3&=\frac{15}{820}\\
+  I_3&\approx \qty{18}{\mA}
+\end{align*}
+\begin{align*}
+  I_4&=\frac{U}{R_3}\\
+  I_4&=\frac{15}{2200}\\
+  I_4&\approx \qty{7}{\mA}
+\end{align*}
+\href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKADcQ8rMVOrjCUIQBZ+QqjAQsATuEJUww4XO6ihYSpBkgUCQYuW7BKNVTxhi0UtZs3t2BLwMgHvExJ1otAdxUgBOnr+gj6BggGuwVAsvmDy4Eo6+AnKoUYpLpDKzqFxqtzJ7tG+6UW4hqYxLo4ZogqJoZFFdTqVsfFFeToYvGlBRaU9xdVuak1DfcZDXTzD4279EywADpnZieWtCuIrIC3OLZ07q2h4Gadb4Du+XFFdAazt3EO3s49+D-HO7+kB6d9VSIRGoAoA}{Simulation zur Parallelschaltung}
+\section{Mischschaltung}
+\textbf{Gegeben:}
+\begin{itemize}
+\item $U_e = \qty{9}{\volt}$
+\item $R_1 = \qty{180}{\ohm}$
+\item $R_2 = \qty{180}{\ohm}$
+\item $R_3 = \qty{470}{\ohm}$
+\item $R_4 = \qty{820}{\ohm}$
+\end{itemize}
+\textbf{Gesucht:}
+\begin{itemize}
+\item $R_g$
+\item $I_1 \dots I_4$
+\item $U_1 \dots U_4$
+\end{itemize}
+\subsection{Berechnung der Mischschaltung}
+\begin{align*}
+  R_g&=R_1+\left(\frac{1}{R_2}+\frac{1}{R_3}+\frac{1}{R_4}\right)^{-1}\\
+  R_g&=180+\left(\frac{1}{180}+\frac{1}{470}+\frac{1}{820}\right)^{-1}\\
+  R_g&\approx\qty{292.325}{\ohm}
+\end{align*}
+\begin{align*}
+  I_1&=\frac{U_e}{R_g}\\
+  I_1&=\frac{9}{292.325}\\
+  I_1&\approx\qty{30.788}{\mA}
+\end{align*}
+\begin{align*}
+  U_1&=R_1*I_1\\
+  U_1&=180*30.788\\
+  U_1&=\qty{5.542}{\volt}
+\end{align*}
+\begin{align*}
+  U_2&=U_3=U_4\\
+  U_2&=I_1*\left(\frac{1}{R_2}+\frac{1}{R_3}+\frac{1}{R_4}\right)^{-1}\\
+  U_2&=30.788*\left(\frac{1}{180}+\frac{1}{470}+\frac{1}{820}\right)^{-1}\\
+  U_2&\approx\qty{3.458}{\volt}
+\end{align*}
+Hier habe ich den Komplizierteren Weg genommen, um $R_2 \dots U_4$ auszurechnen.\\
+Man hätte genausogut auch $[U_2 \dots U_4]=U_e-U_1$ rechnen können.
+\begin{align*}
+  I_2&=\frac{U_2}{R_2}\\
+  I_2&=\frac{3.458}{180}\\
+  I_2&=\qty{19.212}{\mA}
+\end{align*}
+\begin{align*}
+  I_3&=\frac{U_3}{R_3}\\
+  I_3&=\frac{3.458}{470}\\
+  I_3&=\qty{7.358}{\mA}
+\end{align*}
+\begin{align*}
+  I_4&=\frac{U_4}{R_4}\\
+  I_4&=\frac{3.458}{820}\\
+  I_4&=\qty{4.217}{\mA}
+\end{align*}
+\href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWK0xgMxrAFgBxYWpAGxE4BMRaIA7FUlnQKYC0qAUAG4hFYhp7deATiJQxWSCCFjJMBGwBO4LL1Rllqoeslgc8SIo0gyCUdl5oE28HrZpqOlccg4jJszMNlq698Z98VuIOhhKSfmGB1jhgQtBCCYlJiXYOIJFkLulwxqbgnvbhAZmu3r55ELJsAA7gWrlm9ZbqlVA1fJkNHZLN+VW1KqV5g1F9bQDubhX1fgaT5qOx6r1z-stBaJ0rbJNlXZvheasZw7hdxzm9I9vzTiVrzq4X4Vl796t7vZ8Cz6OR-LwPgEAUYQasFr0IT8dqCBDw+NDCoIpGYnCIxuCnEs6i16pjVGBcS1CRMjGojOiDLVseSafVWvicW4sgYkf8BN9VJ4gA}{Simulation zur Mischschaltung}
+
+\section{Widerstandsnetzwerk 1}
+\textbf{Gegeben:}
+\begin{itemize}
+\item $R_1 = \qty{47}{\ohm}$
+\item $R_2 = \qty{56}{\ohm}$
+\item $R_3 = \qty{82}{\ohm}$
+\item $R_4 = \qty{39}{\ohm}$
+\item $R_5 = \qty{15}{\ohm}$
+\item $R_6 = \qty{68}{\ohm}$
+\item $I = \qty{150}{\mA}$
+\end{itemize}
+\textbf{Gesucht:}
+\begin{itemize}
+\item $R_g$
+\item $U_e$
+\end{itemize}
+\subsection{Berechnung Widerstandsnetzwerk 1}
+\begin{align*}
+  R_g&=R_1+\frac{R_2*R_3}{R_2+R_3}+\left(\frac{1}{R_4}+\frac{1}{R_5}+\frac{1}{R_6}\right)^{-1}\\
+  R_g&=47+\frac{56*83}{56+82}+\left(\frac{1}{39}+\frac{1}{15}+\frac{1}{68}\right)^{-1}\\
+  R_g&\approx \qty{89.62}{\ohm}
+\end{align*}
+\begin{align*}
+  U_e&=R_g*I\\
+  U_e&=89,62*0,105\\
+  U_e&\approx \qty{9.41}{\volt}
+\end{align*}
+\href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWKIAsEkoMwgQUwLRhgBQAbiJgEySpwiEBstNLtIAnNGnOw+wOwIAHMhbQExAE7hKIyihoo5C5Cn7FM-GoxDzFymhBZTdkOUJFhZui8iGUT1S+0oznrmggaPbmTEycKf2QGIUczcBQUG0so5Ex2HwNTZMMJAHcYyOjZVOJM3KCA2z0ofIpqXRVC0shyqhpShuYyzJ1SnQVjTKt3Nyru-sLegdaU8BdxsDi6gojSwLBJ2fGa+ZUVwL8A+dsVnSFtMACN+srDisbTtuOQC6o7weaLyn5XC7qAZwrH8Ctf1gAMwAhgAbT64YiUW6vd6GSYfKDQMCQDJ-OETDF1IA}{Simulation zum Wiederstandsnetzwerk 1}
+\section{Widerstandsnetzwerk 2}
+\textbf{Gegeben:}
+\begin{itemize}
+\item $R_1 = \qty{18}{\ohm}$
+\item $R_2 = \qty{82}{\ohm}$
+\item $R_3 = \qty{12}{\ohm}$
+\item $R_4 = \qty{27}{\ohm}$
+\item $R_5 = \qty{33}{\ohm}$
+\item $I = \qty{2}{\ampere}$
+\end{itemize}
+\textbf{Gesucht:}
+\begin{itemize}
+\item $R_g$
+\item $U_2$
+\item $U_5$
+\end{itemize}
+\subsection{Berechnung Widerstandsnetzwerk 2}
+\begin{align*}
+  R_g&=\left(\frac{1}{R_1}+\frac{1}{R_2+R_3}+\frac{1}{R_4+R_5}\right)^{-1}\\
+  R_g&=\left(\frac{1}{18}+\frac{1}{82+12}+\frac{1}{27+33}\right)^{-1}\\
+  R_g&\approx \qty{12.068}{\ohm}
+\end{align*}
+\begin{align*}
+  U_e&=R_g*I\\
+  U_e&=12.068*2\\
+  U_e&\approx \qty{24.137}{\volt}
+\end{align*}
+\begin{align*}
+  I_2&=\frac{U_e}{R_2+R_3}\\
+  I_2&=\frac{24.137}{82+12}\\
+  I_2&\approx \qty{257}{\mA}
+\end{align*}
+\begin{align*}
+  U_2&=R_2*I_2\\
+  U_2&=82*257\\
+  U_2&\approx \qty{21.074}{\volt}
+\end{align*}
+\begin{align*}
+  I_5&=\frac{U_e}{R_4+R_5}\\
+  I_5&=\frac{24.137}{27+33}\\
+  I_5&\approx \qty{402}{\mA}
+\end{align*}
+\begin{align*}
+  U_5&=R_4+R_5*I_5\\
+  U_5&=27+33*402\\
+  U_5&= \qty{13.293}{\volt}
+\end{align*}
+\href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWKIDMBOESAsLMFMBaMMAKADcQi0AmEagdlqtoA5Jl2t21osw40ANjT0ELDlGgISAJ0rFW7ImFoNa7MCxIp6SsDRBt5Kwxo6zKWcWHqDL4o+xbULgrOFsg3p5A1fubO281ZBQUCwIrOkZ7DzsNFwAHZCFkMEEzdkgSZIVwAzzqBDsILJIAd2NFWMcKmvZvWsrgmMjxEOzKtuimQpjOqp75Aw667jtuprSM2MCoOpbaQuL5yrz9Wm857KA}{Simulation zum Widerstandsnetzwerk 2}
+
+\section{Widerstandsnetzwerk 3}
+\textbf{Gegeben:}
+\begin{itemize}
+\item $R_1 = \qty{220}{\ohm}$
+\item $R_2 = \qty{120}{\ohm}$
+\item $R_3 = \qty{470}{\ohm}$
+\item $R_4 = \qty{680}{\ohm}$
+\item $U_e = \qty{12}{\volt}$
+\end{itemize}
+\textbf{Gesucht:}
+\begin{itemize}
+\item $I_1 \dots I_3$
+\end{itemize}
+Wenn ich zwei Widerstände aus der Schaltung zusammenrechne zeige ich das wie folgt an: $[R_1, \dots R_n]$.
+\begin{align*}
+  [R_3, R_4]&=\left(\frac{1}{R_3}+\frac{1}{R_4}\right)^{-1}\\
+  [R_3, R_4]&=\left(\frac{1}{470}+\frac{1}{680}\right)^{-1}\\
+  [R_3, R_4]&\approx \qty{277.913}{\ohm}
+\end{align*}
+\begin{align*}
+  [R_2, \dots R_4]&=R_2+[R_3, R_4]\\
+  [R_2, \dots R_4]&=120+277.913\\
+  [R_2, \dots R_4]&\approx \qty{397.913}{\ohm}
+\end{align*}
+\begin{align*}
+  R_g&=\left(\frac{1}{R_1}+\frac{1}{R_2, \dots R_4}\right)^{-1}
+  R_g&=\left(\frac{1}{220}+\frac{1}{397.913}\right)^{-1}
+  R_g&\approx \qty{141.672}{\ohm}
+\end{align*}
+\begin{align*}
+  I&=\frac{U_e}{R_g}\\
+  I&=\frac{12}{141.672}\\
+  I&= \qty{85}{\mA}
+\end{align*}
+\begin{align*}
+  I_2&=\frac{U_e}{[R_2, \dots R_4]}\\
+  I_2&=)\frac{12}{397.913}\\
+  I_2&= \qty{30}{\mA}
+\end{align*}
+\begin{align*}
+  U_2&=I_2*R_2\\
+  U_2&=0.03*120\\
+  U_2&= \qty{3.6}{\volt}
+\end{align*}
+\begin{align*}
+  U_4&=U_e-U_2\\
+  U_4&=12,3.6\\
+  U_4&= \qty{8.4}{\volt}
+\end{align*}
+\begin{align*}
+  I_4&=\frac{U_4}{R_4}\\
+  I_4&=\frac{8.4}{680}\\
+  I_4&= \qty{12}{\mA}
+\end{align*}
+\href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWKIAsB2ESUGZMFMBaMMAKADdwA2EbSFK8FeyZFFsAJmRZgRICcQATmpgmw6rWYgOHGPAWLI2ATI70x9WVsgAOZJ0irtMvWvpTklXUcFhKLOfvstLLdEYDuEmnQZuSbxdTfRMnKBJsNHZRcRFGDW5I6J9NcwTwJKjHdV8NBzzMnkCqVz94gKA}{Simulation zum Widerstandsnetz 3}
+
+\begin{center}
+  - ENDE -
+  \end{center}
+\end{document}
